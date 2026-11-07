@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Académie IA Pro — Apprends à travailler avec l’IA en 2 heures</title>
+<style>
+:root{--bg:#FFFFFF;--ink:#0F1E33;--mute:#4A5B73;--card:#F5F8FC;--line:#DCE4EE;--acc:#1F5EFF;--on:#FFFFFF;--hi:#FFD23F;--hiink:#0F1E33;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif}
+.w{max-width:720px;margin:0 auto;padding:0 20px}
+header{padding:14px 0;font-weight:700;font-size:18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.inst{background:transparent;border:1px solid var(--acc);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;color:var(--acc);font-family:inherit;cursor:pointer;min-height:36px}
+.hint{color:var(--mute);font-size:14px;margin:10px 0 0}
+.clog{border:1px solid var(--line);border-radius:12px;max-height:55vh;margin:16px 0}
+#cmsg{margin:10px 0 0;font-weight:600;min-height:1.4em}
+h1{font:800 clamp(30px,8vw,46px)/1.12 Georgia,"Times New Roman",serif;margin:8px 0 14px}
+h2{font:700 clamp(22px,5.5vw,28px)/1.2 Georgia,"Times New Roman",serif;margin:0 0 14px}
+p{margin:0 0 14px}
+.sub{color:var(--mute);font-size:19px;max-width:34em}
+section{padding:34px 0;border-top:1px solid var(--line)}
+.btn{display:inline-block;background:var(--acc);color:var(--on);border:2px solid var(--acc);border-radius:10px;padding:14px 22px;font-weight:700;font-size:17px;line-height:1.2;font-family:inherit;cursor:pointer;min-height:48px}
+.btn.alt{background:transparent;color:var(--acc)}
+.btn:focus-visible,.pick:focus-visible,.fab:focus-visible{outline:3px solid var(--hi);outline-offset:3px}
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:18px 0}
+.price b{font:800 44px/1 Georgia,serif}
+.price s{color:var(--mute);font-size:20px}
+.tag{background:var(--hi);color:var(--hiink);border-radius:6px;padding:3px 10px;font-weight:700;font-size:15px}
+.note{color:var(--mute);margin:0 0 16px}
+.chat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:26px 0 0;font-size:16px}
+.chat .u{background:var(--acc);color:var(--on);border-radius:12px 12px 2px 12px;padding:10px 14px;margin:0 0 10px auto;max-width:92%;width:fit-content}
+.chat .a{background:var(--bg);border:1px solid var(--line);border-radius:12px 12px 12px 2px;padding:10px 14px;max-width:96%}
+.chat small{display:block;color:var(--mute);margin-top:10px}
+ul.l{list-style:none;padding:0;margin:0}
+ul.l li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 10px;box-shadow:0 1px 2px rgba(15,30,51,.06)}
+ul.l li b{display:block}
+.m{color:var(--mute);font-size:15px}
+.pick{margin-top:10px;background:transparent;color:var(--acc);border:2px solid var(--acc);border-radius:8px;padding:8px 14px;font-weight:700;font-size:15px;font-family:inherit;cursor:pointer;min-height:40px}
+ol.p{padding:0 0 0 22px;margin:0}
+ol.p li{padding:6px 0 6px 6px}
+ol.p li span{color:var(--mute);white-space:nowrap}
+.f{display:grid;gap:14px;margin-top:18px}
+.f label{display:grid;gap:6px;font-weight:600;font-size:15px}
+.f input,.f select{font-family:inherit;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);min-height:46px;width:100%}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+#omsg{margin:14px 0 0;font-weight:600;min-height:1.4em}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 10px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:10px 0 0;color:var(--mute)}
+footer{padding:26px 0 90px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;background:var(--acc);color:var(--on);border:0;border-radius:999px;padding:14px 20px;font-weight:700;font-size:16px;line-height:1;font-family:inherit;box-shadow:0 4px 16px rgba(0,0,0,.25);cursor:pointer;min-height:48px}
+.panel{position:fixed;right:12px;left:12px;bottom:calc(76px + env(safe-area-inset-bottom,0px));max-width:420px;margin-left:auto;z-index:20;background:var(--card);border:1px solid var(--line);border-radius:14px;display:none;flex-direction:column;max-height:70vh}
+.panel.open{display:flex}
+.log{overflow:auto;padding:14px;display:flex;flex-direction:column;gap:8px;font-size:16px}
+.log div{padding:9px 13px;border-radius:12px;max-width:90%;white-space:pre-wrap}
+.log .bot{background:var(--bg);border:1px solid var(--line);align-self:flex-start}
+.log .me{background:var(--acc);color:var(--on);align-self:flex-end}
+.row{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
+.row input{flex:1;min-width:0;font-family:inherit;font-size:16px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.row button{border:0;border-radius:10px;background:var(--acc);color:var(--on);font-weight:700;font-size:16px;font-family:inherit;padding:0 16px;min-height:44px;cursor:pointer}
+.wa{padding:0 14px 12px;font-size:14px;color:var(--mute)}
+.wa a{color:var(--acc);font-weight:700}
+</style>
+</head>
+<body>
+<div class="w">
+<header><span>Académie IA Pro</span><button class="inst" id="inst" type="button" hidden>Installer l’app</button></header>
+<p class="hint" id="ihint" hidden></p>
+<main>
+
+<section style="border-top:0;padding-top:10px">
+<h1>Apprends à travailler avec l’IA en 2 heures</h1>
+<p class="sub">Un atelier à suivre quand tu veux, pour les employés, les indépendants et les petits patrons qui veulent gagner du temps chaque jour, sans jargon.</p>
+<div class="price"><b>25 $</b><s>49 $</s><span class="tag">Prix de lancement</span></div>
+<p class="note">Disponible à tout moment. Tu reçois ton accès dès que ton paiement est confirmé.</p>
+<button class="btn" type="button" data-offer="0">Commander maintenant</button>
+<div class="chat" aria-label="Exemple de résultat">
+<div class="u">Écris une réponse polie à un client qui réclame un remboursement. Ton calme, 5 lignes, avec une solution.</div>
+<div class="a">Bonjour, merci de votre message et désolé pour ce désagrément. Nous avons bien noté votre demande. Nous pouvons vous proposer un remboursement sous 5 jours ouvrés, ou un échange immédiat si vous préférez…<small>Une demande bien posée donne une réponse utilisable en 10 secondes.</small></div>
+</div>
+</section>
+
+<section>
+<h2>Pour qui ?</h2>
+<ul class="l">
+<li><b>Employés de bureau</b><span class="m">E-mails, comptes rendus, tableurs : finis en quelques minutes au lieu d’une heure.</span></li>
+<li><b>Indépendants et freelances</b><span class="m">Devis, propositions, posts, réponses clients : produis plus avec la même journée.</span></li>
+<li><b>Petits patrons et commerçants</b><span class="m">Messages clients, annonces, organisation : confie à l’IA les tâches qui se répètent.</span></li>
+</ul>
+</section>
+
+<section>
+<h2>Au programme (2 heures)</h2>
+<ol class="p">
+<li>Les bases : poser une demande claire pour obtenir un bon résultat <span>20 min</span></li>
+<li>Cas pratique : e-mails, rapports et comptes rendus en 5 minutes <span>25 min</span></li>
+<li>Cas pratique : analyser des documents et des tableurs <span>25 min</span></li>
+<li>Cas pratique : automatiser une tâche qui se répète <span>25 min</span></li>
+<li>Exercices et ton plan d’action personnel <span>25 min</span></li>
+</ol>
+</section>
+
+<section>
+<h2>Nos formations</h2>
+<ul class="l">
+<li><b>Atelier de 2 h : 25 $</b><span class="m">Prix de lancement, au lieu de 49 $. Guide PDF de modèles de demandes inclus.</span><br><button class="pick" type="button" data-offer="0">Choisir cette formation</button></li>
+<li><b>Mini-formation vidéo en 5 modules : 29 $</b><span class="m">Pour apprendre à ton rythme, module après module.</span><br><button class="pick" type="button" data-offer="1">Choisir cette formation</button></li>
+<li><b>Communauté et nouveaux contenus chaque mois : 19 $/mois</b><span class="m">Entraide, exercices et nouveautés sur l’IA.</span><br><button class="pick" type="button" data-offer="2">Choisir cette formation</button></li>
+<li><b>Atelier privé pour ton équipe : sur devis</b><span class="m">Pour entreprises et associations.</span><br><button class="pick" type="button" data-offer="3">Demander un devis</button></li>
+</ul>
+</section>
+
+<section id="commande">
+<h2>Commander</h2>
+<ol class="p">
+<li>Tu envoies ta demande ci-dessous.</li>
+<li>Tu reçois les instructions de paiement pour ton pays.</li>
+<li>Tu paies et tu m’envoies la capture du paiement.</li>
+<li>Tu reçois ton lien d’accès.</li>
+</ol>
+<div class="f">
+<label>Formation<select id="o"></select></label>
+<label>Ton nom<input id="n" type="text" autocomplete="name"></label>
+<label>Ton pays<select id="c"></select></label>
+<label>Mode de paiement<select id="m"><option value="">Choisis d’abord ton pays</option></select></label>
+<label>Ton numéro WhatsApp ou ton e-mail<input id="k" type="text" autocomplete="off"></label>
+<div class="btns">
+<button class="btn" id="bw" type="button">Envoyer sur WhatsApp</button>
+<button class="btn alt" id="bm" type="button" hidden>Envoyer par e-mail</button>
+</div>
+</div>
+<p id="omsg" role="status"></p>
+</section>
+
+<section id="cours">
+<h2>Accéder à mon cours</h2>
+<p>Tu as payé ? Entre le code d’accès reçu. Ton formateur IA te guide de A à Z, module après module, et reprend là où tu t’es arrêté.</p>
+<div class="f">
+<label>Ton code d’accès<input id="code" type="text" autocomplete="off"></label>
+<div class="btns"><button class="btn" id="go" type="button">Commencer mon cours</button></div>
+</div>
+<p id="cmsg" role="status"></p>
+<div id="course" hidden>
+<div class="log clog" id="clog" aria-live="polite"></div>
+<div class="row"><input id="cq" type="text" placeholder="Écris ta réponse" autocomplete="off" aria-label="Ta réponse"><button id="cs" type="button">Envoyer</button></div>
+</div>
+</section>
+
+<section>
+<h2>Questions fréquentes</h2>
+<details><summary>Dois-je déjà connaître l’IA ?</summary><p>Non. L’atelier part de zéro et se fait avec des exemples de travail réels.</p></details>
+<details><summary>Quand puis-je commencer ?</summary><p>À tout moment. Dès que ton paiement est confirmé, tu reçois ton lien d’accès.</p></details>
+<details><summary>De quoi ai-je besoin ?</summary><p>Un téléphone ou un ordinateur avec internet. Les outils utilisés sont accessibles gratuitement.</p></details>
+<details><summary>Puis-je installer l’application ?</summary><p>Oui. Touche « Installer l’app » en haut de la page. Sur iPhone : Partager, puis « Sur l’écran d’accueil ».</p></details>
+<details><summary>Comment payer ?</summary><p>Tu envoies ta demande, tu reçois les instructions pour ton pays (Mobile Money, carte, virement, PayPal ou Bizum selon le pays), tu paies et tu envoies la capture.</p></details>
+</section>
+</main>
+<footer>© Académie IA Pro</footer>
+</div>
+
+<button class="fab" id="fab" type="button" aria-expanded="false" aria-controls="panel">Une question ?</button>
+<div class="panel" id="panel" role="dialog" aria-label="Assistant Académie IA Pro">
+<div class="log" id="log" aria-live="polite"></div>
+<div class="row"><input id="q" type="text" placeholder="Écris ta question" autocomplete="off" aria-label="Ta question"><button id="send" type="button">Envoyer</button></div>
+<div class="wa" id="wa"></div>
+</div>
+
+<script>
+// E-mail qui reçoit les commandes. Le numéro WhatsApp est au format international, sans +.
+var EMAIL = "Rufinjudicael08@gmail.com";
+var WHATSAPP = "33772034689";
+
+var OFFERS = ["Atelier de 2 h : 25 $", "Mini-formation vidéo en 5 modules : 29 $", "Communauté et contenus mensuels : 19 $/mois", "Atelier privé pour équipe : sur devis"];
+// Garde seulement les modes de paiement que tu peux vraiment recevoir.
+var EUR = ["Carte bancaire", "Virement bancaire", "PayPal"];
+var PAYS = {
+  "Bénin": ["MTN Mobile Money", "Moov Money", "Carte bancaire"],
+  "Togo": ["Moov Money", "T-Money", "Carte bancaire"],
+  "Côte d’Ivoire": ["Orange Money", "MTN Mobile Money", "Wave", "Moov Money", "Carte bancaire"],
+  "Sénégal": ["Wave", "Orange Money", "Carte bancaire"],
+  "Cameroun": ["MTN Mobile Money", "Orange Money", "Carte bancaire"],
+  "France": EUR, "Belgique": EUR, "Suisse": EUR, "Allemagne": EUR, "Italie": EUR, "Canada": EUR,
+  "Espagne": ["Bizum", "Carte bancaire", "PayPal"],
+  "Autre pays": ["Carte bancaire", "PayPal"]
+};
+
+function $(id){ return document.getElementById(id); }
+function fill(sel, items, first){
+  sel.textContent = "";
+  if (first) { var o0 = document.createElement("option"); o0.value = ""; o0.textContent = first; sel.appendChild(o0); }
+  items.forEach(function(t){ var o = document.createElement("option"); o.value = t; o.textContent = t; sel.appendChild(o); });
+}
+fill($("o"), OFFERS);
+fill($("c"), Object.keys(PAYS), "Choisis ton pays");
+$("c").addEventListener("change", function(){
+  var l = PAYS[this.value];
+  if (l) { fill($("m"), l, "Choisis ton mode de paiement"); }
+  else { fill($("m"), [], "Choisis d’abord ton pays"); }
+});
+if (EMAIL) { $("bm").hidden = false; }
+
+function pick(i){
+  $("o").selectedIndex = i;
+  $("commande").scrollIntoView({ behavior: "smooth" });
+}
+var picks = document.querySelectorAll("[data-offer]");
+for (var i = 0; i < picks.length; i++) {
+  picks[i].addEventListener("click", function(){ pick(parseInt(this.getAttribute("data-offer"), 10)); });
+}
+
+function order(kind){
+  var o = $("o").value, n = $("n").value.trim(), c = $("c").value, m = $("m").value, k = $("k").value.trim();
+  if (!n || !c || !m || !k) { $("omsg").textContent = "Remplis tous les champs avant d’envoyer."; return; }
+  var text = "Bonjour, je veux commander.\nFormation : " + o + "\nNom : " + n + "\nPays : " + c + "\nMode de paiement : " + m + "\nContact : " + k;
+  var url = kind === "mail"
+    ? "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Commande : " + o) + "&body=" + encodeURIComponent(text)
+    : "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text);
+  var a = document.createElement("a");
+  a.href = url; a.target = "_blank"; a.rel = "noopener";
+  document.body.appendChild(a); a.click(); a.remove();
+  $("omsg").textContent = "Ta demande est prête. Appuie sur Envoyer dans l’application qui s’ouvre. Tu recevras ensuite les instructions de paiement.";
+}
+$("bw").addEventListener("click", function(){ order("wa"); });
+$("bm").addEventListener("click", function(){ order("mail"); });
+
+function waLink(box, intro, text){
+  box.textContent = intro + " ";
+  var a = document.createElement("a");
+  a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text);
+  a.target = "_blank"; a.rel = "noopener"; a.textContent = "WhatsApp";
+  box.appendChild(a);
+}
+var KB = [
+  [/prix|combien|tarif|coût|cout/i, "L’atelier de 2 h coûte 25 $ (prix de lancement, au lieu de 49 $). La mini-formation coûte 29 $ et la communauté 19 $/mois."],
+  [/pay|mobile|carte|momo|virement|paypal|bizum|wave/i, "Tu envoies ta demande depuis le formulaire, tu reçois les instructions de paiement pour ton pays (Mobile Money, carte, virement, PayPal ou Bizum selon le pays), tu paies, tu envoies la capture et tu reçois ton lien d’accès."],
+  [/date|quand|heure|horaire|commenc/i, "L’atelier est disponible à tout moment : dès que ton paiement est confirmé, tu reçois ton lien d’accès."],
+  [/niveau|débutant|debutant|connaître|connaitre|zéro|zero/i, "Aucun niveau requis. L’atelier part de zéro, avec des exemples de travail réels."],
+  [/programme|contenu|appren/i, "Au programme : bien poser une demande à l’IA, rédiger e-mails et rapports, analyser documents et tableurs, automatiser une tâche répétitive, puis ton plan d’action."]
+];
+function localAnswer(q){
+  for (var i = 0; i < KB.length; i++) { if (KB[i][0].test(q)) { return KB[i][1]; } }
+  return "";
+}
+var PROMPT = "Tu es l’assistant de l’Académie IA Pro. Réponds en français, en 3 phrases maximum, uniquement sur cette offre : atelier de 2 h pour apprendre à utiliser l’IA au travail (e-mails, rapports, tableurs, automatisation), 25 $ au lieu de 49 $, disponible à tout moment dès que le paiement est confirmé, guide PDF inclus, aucun niveau requis. Mini-formation vidéo à 29 $, communauté à 19 $/mois, atelier privé pour équipes sur devis. Paiement : le client envoie sa demande, reçoit les instructions de paiement pour son pays (Mobile Money, carte, virement, PayPal ou Bizum), paie, envoie la capture, puis reçoit son lien d’accès. N’invente rien ; si tu ne sais pas, invite à écrire sur WhatsApp.\n\nQuestion du visiteur : ";
+var sampleP = null;
+function getSample(){
+  if (!sampleP) {
+    sampleP = (window.claude && window.claude.use ? window.claude.use("sample") : Promise.resolve(null)).catch(function(){ return null; });
+  }
+  return sampleP;
+}
+function add(cls, text){
+  var d = document.createElement("div");
+  d.className = cls; d.textContent = text;
+  $("log").appendChild(d); $("log").scrollTop = $("log").scrollHeight;
+  return d;
+}
+var shist = [];
+async function api(mode, code, msgs){
+  var r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: mode, code: code, messages: msgs }) });
+  var d = await r.json().catch(function(){ return {}; });
+  if (!r.ok || !d.text) { var e = new Error(d.error || "indisponible"); e.status = r.status; throw e; }
+  return d.text;
+}
+async function answer(q){
+  shist.push({ role: "user", text: q });
+  try { var t = await api("sales", "", shist); shist.push({ role: "assistant", text: t }); return t; } catch (e) { shist.pop(); }
+  var s = await getSample();
+  if (s) {
+    try {
+      var r = await s(PROMPT + q, { cache: false, modelTier: "quick" });
+      if (r && r.text) { return r.text; }
+    } catch (e) {}
+  }
+  return localAnswer(q);
+}
+async function send(){
+  var q = $("q").value.trim();
+  if (!q) { return; }
+  $("q").value = "";
+  add("me", q);
+  var wait = add("bot", "…");
+  var a = await answer(q);
+  wait.textContent = a || "Je préfère te répondre en direct : écris-nous sur WhatsApp, on te répond vite.";
+}
+var opened = false;
+$("fab").addEventListener("click", function(){
+  var open = $("panel").classList.toggle("open");
+  this.setAttribute("aria-expanded", open ? "true" : "false");
+  if (open && !opened) {
+    opened = true;
+    add("bot", "Bonjour ! Pose-moi ta question : prix, programme, paiement.");
+    waLink($("wa"), "Besoin d’un humain ? Écris-nous sur", "Bonjour, j’ai une question sur l’atelier IA.");
+  }
+  if (open) { $("q").focus(); }
+});
+$("send").addEventListener("click", send);
+$("q").addEventListener("keydown", function(e){ if (e.key === "Enter") { send(); } });
+// ---- Cours donné par l'IA (Gemini), protégé par un code d'accès
+var cmsgs = [], ccode = "";
+function cadd(role, text){
+  var d = document.createElement("div");
+  d.className = role === "user" ? "me" : "bot"; d.textContent = text;
+  $("clog").appendChild(d); $("clog").scrollTop = $("clog").scrollHeight;
+  return d;
+}
+function csave(){ try { localStorage.setItem("aia_course", JSON.stringify({ code: ccode, msgs: cmsgs.slice(-40) })); } catch (e) {} }
+async function cturn(text){
+  cmsgs.push({ role: "user", text: text });
+  var wait = cadd("assistant", "…");
+  try {
+    var t = await api("course", ccode, cmsgs);
+    cmsgs.push({ role: "assistant", text: t }); wait.textContent = t; csave();
+  } catch (e) {
+    cmsgs.pop();
+    if (e.status === 401) { wait.textContent = "Code d’accès invalide. Vérifie le code reçu après ton paiement."; }
+    else { wait.textContent = "Le formateur IA n’est pas disponible pour le moment. Réessaie dans un instant."; }
+  }
+}
+$("go").addEventListener("click", function(){
+  var c = $("code").value.trim();
+  if (!c) { $("cmsg").textContent = "Entre ton code d’accès."; return; }
+  ccode = c; cmsgs = []; $("clog").textContent = ""; $("course").hidden = false; $("cmsg").textContent = "";
+  cturn("Bonjour, je commence le cours.");
+});
+function csend(){
+  var q = $("cq").value.trim();
+  if (!q) { return; }
+  $("cq").value = ""; cadd("user", q); cturn(q);
+}
+$("cs").addEventListener("click", csend);
+$("cq").addEventListener("keydown", function(e){ if (e.key === "Enter") { csend(); } });
+try {
+  var sv = JSON.parse(localStorage.getItem("aia_course") || "null");
+  if (sv && sv.code && sv.msgs && sv.msgs.length) {
+    ccode = sv.code; cmsgs = sv.msgs; $("code").value = ccode; $("course").hidden = false;
+    cmsgs.forEach(function(m, i){ if (i > 0) { cadd(m.role, m.text); } });
+  }
+} catch (e) {}
+
+// ---- Installation de l'application
+var dip = null;
+var standalone = (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) || window.navigator.standalone;
+window.addEventListener("beforeinstallprompt", function(e){ e.preventDefault(); dip = e; });
+if (!standalone) { $("inst").hidden = false; }
+$("inst").addEventListener("click", async function(){
+  if (dip) { dip.prompt(); try { await dip.userChoice; } catch (e) {} dip = null; return; }
+  var h = $("ihint"); h.hidden = !h.hidden;
+  h.textContent = "Sur iPhone : touche Partager, puis « Sur l’écran d’accueil ». Sur Android : ouvre le menu du navigateur, puis « Installer l’application ».";
+});
+if ("serviceWorker" in navigator) { try { navigator.serviceWorker.register("sw.js").catch(function(){}); } catch (e) {} }
+</script>
+</body>
+</html>
