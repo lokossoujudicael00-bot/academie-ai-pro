@@ -321,7 +321,7 @@ async function cturn(text){
   } catch (e) {
     cmsgs.pop();
     if (e.status === 401) { wait.textContent = "Code d’accès invalide. Vérifie le code reçu après ton paiement."; }
-    else { wait.textContent = "Le formateur IA n’est pas disponible pour le moment. Réessaie dans un instant."; }
+    else { wait.textContent = "Le formateur IA n’est pas disponible pour le moment (" + (e.status || "réseau") + " : " + String(e.message || "").slice(0, 80) + "). Réessaie dans un instant."; }
   }
 }
 $("go").addEventListener("click", function(){
